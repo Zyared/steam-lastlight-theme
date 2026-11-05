@@ -1,0 +1,76 @@
+/* Last Light theme: store and community pages (colours only, page layout untouched).
+   Short hashed classes below come from the current store build and may change with Steam updates. */
+:root {
+  --ll-black: #0d0a07;
+  --ll-panel: #16110b;
+  --ll-panel2: #211910;
+  --ll-line: #4a3518;
+  --ll-y: #f5c542;
+  --ll-r: #e8743b;
+  --ll-c: #8fd694;
+  --ll-text: #f1e6cf;
+  --ll-dim: #9a8768;
+  --ll-y-rgb: 245, 197, 66;
+  --ll-r-rgb: 232, 116, 59;
+  --ll-c-rgb: 143, 214, 148;
+  --ll-black-rgb: 13, 10, 7;
+  --ll-panel-rgb: 22, 17, 11;
+}
+html, body {
+  background: var(--ll-black) !important;
+  background-image: none !important;
+}
+::selection { background: var(--ll-y); color: #000; }
+::-webkit-scrollbar { width: 10px; height: 10px; background: var(--ll-black); }
+::-webkit-scrollbar-thumb { background: var(--ll-line); }
+::-webkit-scrollbar-thumb:hover { background: var(--ll-y); }
+::-webkit-scrollbar-corner { background: var(--ll-black); }
+
+.page_background, .responsive_page_template_content, .page_content_ctn, .home_page_body_ctn {
+  background-color: var(--ll-black) !important;
+}
+
+/* store navigation */
+.XLbP8xOkCYw- {
+  background: var(--ll-panel) !important;
+  background-image: none !important;
+  border-bottom: 2px solid var(--ll-y);
+}
+.A42lZ-U1dhI- { background: var(--ll-y) !important; color: #000 !important; border-radius: 0 !important; }
+.A42lZ-U1dhI- svg, .A42lZ-U1dhI- path { fill: #000 !important; }
+
+/* panels and capsules */
+.maxz19gKOQc-, .carousel__slider, .deep_dive_key_tags {
+  background-image: none !important;
+  background-color: var(--ll-panel) !important;
+}
+.jxYpM-g5fRs- { background: var(--ll-y) !important; color: #000 !important; }
+.rsPEubiF9HI- { background: var(--ll-panel2) !important; }
+.info, .gradient { background-image: none !important; background-color: rgba(var(--ll-panel-rgb), .9) !important; }
+.x8jWPgfdVoI- { background: var(--ll-y) !important; color: #000 !important; }
+.JhiIqI-S0Js- { background: var(--ll-panel2) !important; }
+.gift_card_desktop { background-image: none !important; background-color: var(--ll-panel2) !important; border: 1px solid var(--ll-line); }
+.store_main_capsule { background-color: var(--ll-panel) !important; }
+
+/* tabs and lists */
+.home_tab_button.active { border-color: var(--ll-y) !important; color: var(--ll-y) !important; }
+.tab_row_item { background: var(--ll-panel) !important; }
+.tab_row_item.focus, .tab_preview.focus { background: var(--ll-panel2) !important; box-shadow: inset 3px 0 0 var(--ll-y); }
+.tags span, .tags a, .deep_dive_tag { background: var(--ll-panel2) !important; color: var(--ll-text) !important; border-radius: 0 !important; }
+.positive { color: var(--ll-c) !important; }
+.ds_flag.ds_wishlist_flag { background: var(--ll-r) !important; }
+.LoadingThrobber .Bar { background: var(--ll-y) !important; }
+
+/* buttons and prices */
+.btn_green_steamui, .btn_green_white_innerfade, .btn_blue_steamui, .btn_blue_white_innerfade {
+  background: var(--ll-y) !important;
+  border-radius: 0 !important;
+}
+.btn_green_steamui > span, .btn_green_white_innerfade > span,
+.btn_blue_steamui > span, .btn_blue_white_innerfade > span {
+  background: transparent !important;
+  color: #000 !important;
+  border-radius: 0 !important;
+}
+.discount_pct, .nw-DtQ670Sc- { background: var(--ll-r) !important; color: #fff !important; }
+.discount_final_price { color: var(--ll-y) !important; }

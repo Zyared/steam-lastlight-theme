@@ -1,0 +1,81 @@
+/* Last Light theme: sign-in splash shown while Steam starts */
+:root {
+  --ll-black: #0d0a07;
+  --ll-panel: #16110b;
+  --ll-panel2: #211910;
+  --ll-line: #4a3518;
+  --ll-y: #f5c542;
+  --ll-r: #e8743b;
+  --ll-c: #8fd694;
+  --ll-text: #f1e6cf;
+  --ll-dim: #9a8768;
+  --ll-y-rgb: 245, 197, 66;
+  --ll-r-rgb: 232, 116, 59;
+  --ll-c-rgb: 143, 214, 148;
+  --ll-black-rgb: 13, 10, 7;
+  --ll-panel-rgb: 22, 17, 11;
+  --ll-font: "Cascadia Mono", "Cascadia Code", Consolas, "Lucida Console", monospace;
+  --ll-cut: none;
+  --ll-cut-s: none;
+  --ll-tape: repeating-linear-gradient(90deg, var(--ll-y) 0 4px, transparent 4px 8px);
+}
+@keyframes ll-tape { to { background-position: 45.25px 0; } }
+@keyframes ll-glitch {
+  0%, 86%, 100% { transform: none; text-shadow: none; }
+  88% { transform: translateX(-3px) skewX(-8deg); text-shadow: 3px 0 var(--ll-r), -3px 0 var(--ll-c); }
+  92% { transform: translateX(3px) skewX(6deg); text-shadow: -3px 0 var(--ll-r), 3px 0 var(--ll-c); }
+  96% { transform: translateX(-1px); text-shadow: 2px 0 var(--ll-c); }
+}
+
+html, body { background: var(--ll-black) !important; }
+.title-area-highlight { display: none !important; }
+.title-area-icon:hover { background: var(--ll-r) !important; }
+
+.LoginStaticBackground { background: var(--ll-black) !important; background-image: none !important; }
+/* the blurred game covers stay, drained of colour so the yellow carries the screen */
+.LoginAnimatedBackground { filter: grayscale(1) brightness(.5); }
+
+/* yellow tint, and hazard tape along the bottom edge */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(var(--ll-y-rgb), .1), rgba(var(--ll-black-rgb), .35) 55%, rgba(var(--ll-r-rgb), .1));
+  box-shadow: inset 0 2px 0 var(--ll-y);
+}
+body::after {
+  content: "";
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  height: 6px;
+  z-index: 2;
+  pointer-events: none;
+  background: repeating-linear-gradient(-45deg, var(--ll-y) 0 8px, #000 8px 16px);
+  background-size: 45.25px 45.25px;
+  animation: ll-tape 3s linear infinite;
+}
+.Login { position: relative; z-index: 3; }
+
+/* spinner: the ring is part of the image, so it is recoloured with a hue shift; the white logo is unaffected */
+.SpinnerLoaderContainer img { filter: hue-rotate(213deg) saturate(3) drop-shadow(0 0 10px rgba(var(--ll-y-rgb), .45)); }
+
+.LoginStatus {
+  font-family: var(--ll-font) !important;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--ll-y) !important;
+  animation: ll-glitch 2.6s steps(1) infinite;
+}
+.PersonaName { color: var(--ll-y) !important; font-family: var(--ll-font) !important; letter-spacing: .06em; }
+.Progress .ProgressBar { background: var(--ll-line) !important; border-radius: 0 !important; }
+.Progress .ProgressBar > * { background: var(--ll-y) !important; background-image: none !important; border-radius: 0 !important; }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; } }
+
+/* ---------- character: a warm lamp instead of a hard glitch ---------- */
+@keyframes ll-glitch { 0%, 100% { text-shadow: none; } 50% { text-shadow: 0 0 8px rgba(var(--ll-y-rgb), .7); } }
+@keyframes ll-split { 0%, 100% { filter: drop-shadow(0 0 7px rgba(var(--ll-y-rgb), .45)); } 50% { filter: drop-shadow(0 0 14px rgba(var(--ll-y-rgb), .75)); } }
+@keyframes ll-flicker { 0%, 91%, 100% { opacity: 1; } 92% { opacity: .72; } 94% { opacity: 1; } 96% { opacity: .85; } }
+@keyframes ll-sheen { 0%, 70% { transform: translateX(-140%); } 100% { transform: translateX(380%); } }

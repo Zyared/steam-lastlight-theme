@@ -1,0 +1,453 @@
+/* Last Light theme: main window, menus and dialogs */
+:root {
+  --ll-black: #0d0a07;
+  --ll-panel: #16110b;
+  --ll-panel2: #211910;
+  --ll-line: #4a3518;
+  --ll-y: #f5c542;
+  --ll-r: #e8743b;
+  --ll-c: #8fd694;
+  --ll-text: #f1e6cf;
+  --ll-dim: #9a8768;
+  --ll-y-rgb: 245, 197, 66;
+  --ll-r-rgb: 232, 116, 59;
+  --ll-c-rgb: 143, 214, 148;
+  --ll-black-rgb: 13, 10, 7;
+  --ll-panel-rgb: 22, 17, 11;
+  --ll-font: "Cascadia Mono", "Cascadia Code", Consolas, "Lucida Console", monospace;
+  --ll-cut: none;
+  --ll-cut-s: none;
+  --ll-tape: repeating-linear-gradient(90deg, var(--ll-y) 0 4px, transparent 4px 8px);
+}
+
+@keyframes ll-glitch {
+  0%, 100% { transform: none; text-shadow: none; }
+  20% { transform: translateX(-2px) skewX(-8deg); text-shadow: 2px 0 var(--ll-r), -2px 0 var(--ll-c); }
+  40% { transform: translateX(2px) skewX(6deg); text-shadow: -2px 0 var(--ll-r), 2px 0 var(--ll-c); }
+  60% { transform: translateX(-1px); text-shadow: 3px 0 var(--ll-c); }
+  80% { transform: translateX(1px) skewX(-3deg); text-shadow: -3px 0 var(--ll-r); }
+}
+@keyframes ll-split {
+  0%, 100% { filter: drop-shadow(0 0 7px rgba(var(--ll-y-rgb), .55)); }
+  25% { filter: drop-shadow(-5px 0 0 var(--ll-r)) drop-shadow(5px 0 0 var(--ll-c)); }
+  50% { filter: drop-shadow(5px 0 0 var(--ll-r)) drop-shadow(-5px 0 0 var(--ll-c)); }
+  75% { filter: drop-shadow(-2px 0 0 var(--ll-r)) drop-shadow(2px 0 0 var(--ll-c)); }
+}
+@keyframes ll-tape { to { background-position: 45.25px 0; } }
+@keyframes ll-run { from { transform: translateX(-30vw); } to { transform: translateX(110vw); } }
+@keyframes ll-sheen { 0%, 72% { transform: translateX(-140%) skewX(-24deg); } 100% { transform: translateX(380%) skewX(-24deg); } }
+@keyframes ll-flicker {
+  0%, 89%, 100% { opacity: 1; transform: skewX(-10deg); }
+  90% { opacity: .35; transform: skewX(-10deg) translateX(-3px); }
+  92% { opacity: 1; transform: skewX(4deg) translateX(3px); }
+  94% { opacity: .55; transform: skewX(-10deg); }
+  96% { opacity: 1; transform: skewX(-16deg) translateX(-1px); }
+}
+@keyframes ll-tick { 50% { opacity: .25; } }
+@keyframes ll-tear { 0%, 100% { opacity: 0; } 15%, 85% { opacity: 1; } 40% { transform: translateX(-26px); } 70% { transform: translateX(18px); } }
+@keyframes ll-boot-out { to { clip-path: inset(50% 0 50% 0); visibility: hidden; } }
+@keyframes ll-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes ll-pop { 0% { opacity: 0; transform: translateY(6px); } 100% { opacity: 1; transform: none; } }
+
+/* ---------- base ---------- */
+html, body { background: var(--ll-black) !important; }
+body { color: var(--ll-text); }
+::selection { background: var(--ll-y); color: #000; }
+::-webkit-scrollbar { width: 8px; height: 8px; background: transparent; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--ll-line); }
+::-webkit-scrollbar-thumb:hover { background: var(--ll-y); }
+::-webkit-scrollbar-corner { background: transparent; }
+
+/* ---------- top bar ---------- */
+.Wrapper.Maximized, .OuterFrame { background: var(--ll-black) !important; }
+.TopBar {
+  position: relative;
+  overflow: hidden;
+  background: var(--ll-black) !important;
+  border-bottom: 2px solid var(--ll-y);
+}
+.TopBar::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 26vw;
+  height: 2px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, #fff, var(--ll-r), transparent);
+  will-change: transform;
+  animation: ll-run 5.5s linear infinite;
+}
+.RootMenuButton { font-family: var(--ll-font); color: var(--ll-dim) !important; }
+.RootMenuButton:hover { color: var(--ll-y) !important; }
+.SuperNav .MenuButton {
+  font-family: var(--ll-font) !important;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--ll-text) !important;
+}
+.SuperNav .MenuButton::after { background: var(--ll-y) !important; box-shadow: 0 0 8px var(--ll-y); height: 3px !important; border-radius: 0 !important; }
+.SuperNav .SuperNavMenu:hover .MenuButton {
+  color: var(--ll-y) !important;
+  animation: ll-glitch .3s steps(1) 1;
+}
+.AccountMenu, .NotificationsButton {
+  background: transparent !important;
+  border: 1px solid var(--ll-line);
+  border-radius: 0 !important;
+  clip-path: var(--ll-cut-s);
+}
+.AccountMenu, .AccountMenu * { color: var(--ll-y) !important; }
+.AccountMenu path { fill: var(--ll-y) !important; }
+.AccountMenu:hover, .NotificationsButton:hover { border-color: var(--ll-y); background: rgba(var(--ll-y-rgb), .08) !important; }
+.AnnouncementsButton { background: var(--ll-r) !important; border-radius: 0 !important; clip-path: var(--ll-cut-s); }
+.WalletBalance { color: var(--ll-y) !important; }
+.title-area-highlight { display: none !important; }
+.title-bar-actions .title-area-icon:hover { background: var(--ll-r) !important; }
+
+.URLBar, .URLBarReplacement { background: var(--ll-black) !important; border-bottom: 1px solid var(--ll-line); }
+.URLBar .URL { color: var(--ll-y) !important; font-family: var(--ll-font); letter-spacing: .05em; }
+
+/* ---------- bottom bar and alerts ---------- */
+.BottomBar {
+  position: relative;
+  background: var(--ll-black) !important;
+}
+.BottomBar::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  pointer-events: none;
+  background: var(--ll-tape);
+  background-size: 45.25px 45.25px;
+  animation: ll-tape 3s linear infinite;
+}
+.AddGameButton, .FriendsButton { font-family: var(--ll-font); text-transform: uppercase; letter-spacing: .08em; }
+.AddGameButton:hover, .FriendsButton:hover { color: var(--ll-y) !important; animation: ll-glitch .3s steps(1) 1; }
+.Queue { color: var(--ll-y) !important; font-family: var(--ll-font); }
+.Alert { background: var(--ll-panel2) !important; border-top: 2px solid var(--ll-r); }
+.AlertButton { background: transparent !important; border: 1px solid var(--ll-y); border-radius: 0 !important; color: var(--ll-y) !important; clip-path: var(--ll-cut-s); }
+.AlertButton:hover { background: var(--ll-y) !important; color: #000 !important; }
+
+/* ---------- library sidebar ---------- */
+.Library, .Library > .Container { background: var(--ll-black) !important; }
+.Library > .Container > div:first-child,
+.Library > .Container > div:first-child > .Container,
+.Library > .Container > div:first-child > .Container > div:first-child {
+  background: var(--ll-panel) !important;
+  background-image: none !important;
+}
+.Library > .Container > div:first-child > .Container { border-right: 1px solid var(--ll-line); }
+.Library .HomeBox .Bar {
+  background: var(--ll-panel2) !important;
+  border-radius: 0 !important;
+  clip-path: var(--ll-cut);
+}
+.Library .HomeBox .Label { font-family: var(--ll-font); text-transform: uppercase; letter-spacing: .12em; color: var(--ll-y) !important; }
+.Library .HomeBox .Bar.Selected { background: var(--ll-y) !important; }
+.Library .HomeBox .Bar.Selected .Label { color: #000 !important; }
+.Library .HomeBox .Bar.Selected svg, .Library .HomeBox .Bar.Selected svg * { fill: rgba(0, 0, 0, .12) !important; }
+.Library .HomeBox .Bar:not(.Selected):hover { background: rgba(var(--ll-y-rgb), .16) !important; }
+.Library .MenuHeader, .Library .SearchInput,
+.Library .Bar + .Container { background: var(--ll-panel2) !important; border-radius: 0 !important; }
+.Library .ViewName { font-family: var(--ll-font); text-transform: uppercase; letter-spacing: .08em; }
+.Library .DialogInput { background: transparent !important; border-radius: 0 !important; color: var(--ll-y) !important; caret-color: var(--ll-r); font-family: var(--ll-font); }
+.Library .DialogInput:focus { box-shadow: inset 0 -2px 0 var(--ll-y) !important; }
+.Library .SectionName { font-family: var(--ll-font); text-transform: uppercase; letter-spacing: .14em; color: var(--ll-y) !important; }
+.Library .Container.Focusable:has(.SectionName) { background-image: none !important; background-color: transparent !important; }
+.Library .Container.Installed .Draggable { transition: box-shadow .1s, padding-left .1s; }
+.Library .Container.Installed:hover .Draggable {
+  background: rgba(var(--ll-y-rgb), .1) !important;
+  box-shadow: inset 3px 0 0 var(--ll-y);
+}
+.Library .Container.Installed.Selected { background: var(--ll-y) !important; box-shadow: inset 4px 0 0 var(--ll-r); }
+.Library .Container.Installed.Selected .Draggable { background: transparent !important; box-shadow: none; }
+.Library .Container.Installed.Selected span { color: #000 !important; font-weight: 600; }
+.FilterBucketLabel { color: var(--ll-y) !important; font-family: var(--ll-font); }
+.CheckboxWithImage path, .Library .tool-tip-source path { fill: var(--ll-y) !important; }
+.Collection.NewCollection { background: var(--ll-panel2) !important; background-image: none !important; border-radius: 0 !important; }
+
+/* ---------- library content ---------- */
+.Library .MainPanel > div {
+  background-color: var(--ll-black) !important;
+  background-image: repeating-linear-gradient(135deg, rgba(var(--ll-y-rgb), .018) 0 1px, transparent 1px 22px) !important;
+}
+.AppDetailsMain > .Container, .LibraryHome, .UpdatesContainer { background: transparent !important; background-image: none !important; }
+.ShowcaseHeader, .UpdatesContainer .Name {
+  font-family: var(--ll-font);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--ll-y) !important;
+}
+.ShowcaseHeader::before { content: ""; flex: none; align-self: center; width: 5px; height: 16px; margin-right: 9px; background: var(--ll-y); transform: skewX(-20deg); }
+.ShowcaseHeader > div:first-child, .ShowcaseHeader > div:first-child * { color: var(--ll-y) !important; }
+.UpdatesContainer .PageableContainer > div:first-child .Name {
+  display: inline-block;
+  padding: 1px 16px 1px 10px;
+  background: var(--ll-y);
+  color: #000 !important;
+  clip-path: var(--ll-cut-s);
+}
+.EventTime { color: var(--ll-c) !important; font-family: var(--ll-font); letter-spacing: .05em; text-transform: uppercase; }
+.EventTimeSpan { background: var(--ll-r) !important; }
+.GameIconAndName { background: transparent !important; border: 1px solid var(--ll-line); border-radius: 0 !important; }
+.DialogDropDown { background: var(--ll-panel2) !important; border-radius: 0 !important; border: 1px solid var(--ll-line) !important; }
+.AddShowcase { font-family: var(--ll-font); text-transform: uppercase; letter-spacing: .08em; }
+.ScrollToTopButton > div { background: var(--ll-y) !important; background-image: none !important; color: #000 !important; border-radius: 0 !important; }
+
+/* game covers */
+.LibraryItemBox, .Portrait, .Capsule { border-radius: 0 !important; }
+.PortraitImage, .LandscapeImage { border-radius: 0 !important; clip-path: var(--ll-cut); }
+.LibraryItemBox:hover, .Capsule:hover, .RecentGame:hover {
+  animation: ll-split .36s steps(1) 1;
+  filter: drop-shadow(0 0 7px rgba(var(--ll-y-rgb), .55));
+  z-index: 3;
+}
+.AppPortraitBanner { background: var(--ll-y) !important; color: #000 !important; }
+.Landscape.Download { background-image: none !important; background-color: var(--ll-panel2) !important; }
+
+/* ---------- game page ---------- */
+.Body.ScrollContainer.Glassy { background: transparent !important; background-image: none !important; }
+.PlayBar.Glassy, .Container.InPage {
+  background: rgba(var(--ll-black-rgb), .94) !important;
+  background-image: none !important;
+  border-top: 2px solid var(--ll-y);
+  border-bottom: 1px solid var(--ll-line);
+}
+.Backdrop { opacity: .25; }
+.BackdropGlass { background: var(--ll-black) !important; background-image: none !important; opacity: .85; }
+.FocusBar { background: var(--ll-y) !important; background-image: none !important; }
+
+.ActionSection { filter: drop-shadow(4px 4px 0 var(--ll-r)); }
+.PlayButton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 !important;
+  clip-path: var(--ll-cut);
+  background: var(--ll-y) !important;
+  background-image: none !important;
+  color: #000 !important;
+}
+.PlayButton .ButtonText {
+  color: #000 !important;
+  font-family: var(--ll-font);
+  text-transform: uppercase;
+  letter-spacing: .14em;
+}
+.PlayButton svg, .PlayButton svg * { fill: #000 !important; }
+.PlayButton::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 26%;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .85), transparent);
+  will-change: transform;
+  animation: ll-sheen 3.6s ease-in-out infinite;
+}
+.ActionSection:hover { filter: drop-shadow(4px 4px 0 var(--ll-y)); }
+.PlayButton:hover { background: var(--ll-r) !important; }
+.PlayButton:hover .ButtonText { color: #fff !important; }
+.PlayButton:hover svg, .PlayButton:hover svg * { fill: #fff !important; }
+
+.PlayBarLabel { font-family: var(--ll-font); text-transform: uppercase; letter-spacing: .1em; color: var(--ll-y) !important; }
+.LastPlayedInfo, .PlaytimeStatus { color: var(--ll-text) !important; }
+.PlayBarGameName { font-family: var(--ll-font); text-transform: uppercase; color: var(--ll-y) !important; }
+.RightControls path, .RightControls svg { fill: var(--ll-y) !important; }
+.RightControls button, .RightControls > div > div { border-radius: 0 !important; }
+
+/* progress bars (achievements) */
+._1FnTqlsi2_-TJf1d5apoS6, ._3Rm36_oeAhvIg6ZYP9l1Jj { background: var(--ll-y) !important; box-shadow: 0 0 8px rgba(var(--ll-y-rgb), .6); }
+
+.AppDetailsSection, .SectionContainer { border-radius: 0 !important; }
+.AppDetailsSection { background: rgba(var(--ll-panel-rgb), .82) !important; background-image: none !important; border: 1px solid var(--ll-line); }
+.AppDetailsSection > .Panel { background: transparent !important; background-image: none !important; }
+.SectionHeader {
+  font-family: var(--ll-font);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: inset 4px 0 0 var(--ll-y);
+}
+.SectionHeader .LabelText, .Label .LabelText { color: var(--ll-y) !important; }
+.Highlight { background-image: none !important; background-color: var(--ll-panel2) !important; }
+.BackgroundEffects { background-image: none !important; }
+.ReviewContainer, .RatingContainer { background: var(--ll-panel2) !important; border-radius: 0 !important; }
+.LeftContainer .Playtime { color: var(--ll-y) !important; }
+.ReviewThumbButton path { fill: var(--ll-y) !important; }
+.LinksSection .Link:hover .Text { color: var(--ll-y) !important; animation: ll-glitch .3s steps(1) 1; }
+
+/* friend status colours: online yellow, in game red */
+.online .playerName, .ActorName .playerName { color: var(--ll-y) !important; }
+.ingame .playerName { color: var(--ll-r) !important; }
+.avatarStatus { background: var(--ll-y) !important; background-image: none !important; }
+.ingame .avatarStatus, .avatarHolder.ingame .avatarStatus { background: var(--ll-r) !important; }
+.offline .avatarStatus { background: var(--ll-dim) !important; }
+.ingame .richPresenceLabel, .richPresenceLabel { color: var(--ll-r) !important; }
+.DemoBanner { background: var(--ll-r) !important; color: #fff !important; }
+path.playTriangle { fill: var(--ll-r) !important; }
+.FriendIsPlaying { color: var(--ll-r) !important; }
+.FriendIsPlaying path, .FriendIsPlaying circle, .WavingArm { fill: var(--ll-r) !important; }
+
+.DialogButton, .AppDetailsButton, .ReviewThumbButton { border-radius: 0 !important; }
+.DialogButton.Primary, .SaveButton {
+  background: var(--ll-y) !important;
+  background-image: none !important;
+  color: #000 !important;
+  clip-path: var(--ll-cut-s);
+}
+.DialogButton.Secondary, .AppDetailsButton, .ReviewThumbButton {
+  background: transparent !important;
+  background-image: none !important;
+  border: 1px solid var(--ll-line) !important;
+  color: var(--ll-text) !important;
+}
+.DialogButton.Secondary:hover, .AppDetailsButton:hover, .ReviewThumbButton:hover {
+  border-color: var(--ll-y) !important;
+  color: var(--ll-y) !important;
+}
+
+/* ---------- notification list under the bell ---------- */
+.StandardTemplateContainer, .StandardTemplate, .ShortTemplate { background-color: var(--ll-panel) !important; background-image: none !important; border-radius: 0 !important; }
+.OnlineTitle, .GroupMessageTitle, .PlayerNickName { color: var(--ll-y) !important; }
+.IngameTitle, .IngameTitle .PlayerNickName, .FriendInGameAppColor { color: var(--ll-r) !important; }
+
+/* ---------- menus and dialogs ---------- */
+.contextMenu, .MenuPopup {
+  background: var(--ll-panel) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+/* The menu can be a pixel wider than its window, so the frame is drawn on the window itself. */
+html.MillenniumWindow_ContextMenu body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  pointer-events: none;
+  border: 1px solid var(--ll-y);
+}
+.contextMenuItem { font-family: var(--ll-font); letter-spacing: .03em; color: var(--ll-text) !important; border-radius: 0 !important; }
+.contextMenuItem:hover { background: var(--ll-y) !important; color: #000 !important; }
+.MenuItem.Separator { border-color: var(--ll-line) !important; background: var(--ll-line) !important; }
+.ModalDialogPopup, .FullModalOverlay { background-color: var(--ll-black) !important; }
+.ModalPosition_TopBar { background: var(--ll-y) !important; background-image: none !important; }
+.DialogContent, .MarketingMessagesDialog .BrowserViewHost {
+  background: var(--ll-panel) !important;
+  background-image: none !important;
+}
+
+/* ---------- injected overlays (main window only) ---------- */
+#ll-scan, #ll-tear, #ll-boot, #ll-logo, #ll-hud { pointer-events: none; position: fixed; }
+#ll-scan {
+  inset: 0;
+  z-index: 99990;
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, .1) 0 1px, transparent 1px 4px);
+}
+#ll-tear { inset: 0; z-index: 99992; overflow: hidden; }
+#ll-tear i {
+  position: absolute;
+  left: 0; right: 0;
+  opacity: 0;
+  mix-blend-mode: screen;
+}
+#ll-tear.on i { animation: ll-tear .2s steps(1) 1; }
+#ll-logo {
+  top: 38px; right: 18px;
+  z-index: 99985;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 24px;
+  font: 400 19px var(--ll-font);
+  letter-spacing: .1em;
+  color: var(--ll-y);
+  text-shadow: 0 0 10px rgba(var(--ll-y-rgb), .5);
+  transform: skewX(-10deg);
+  animation: ll-flicker 8s steps(1) infinite;
+}
+#ll-logo b { color: var(--ll-r); font-weight: 400; text-shadow: 0 0 10px rgba(var(--ll-r-rgb), .6); }
+#ll-hud {
+  left: 190px; bottom: 14px;
+  z-index: 99985;
+  display: flex;
+  gap: 14px;
+  font: 13px var(--ll-font);
+  letter-spacing: .1em;
+  color: var(--ll-dim);
+}
+#ll-hud b { color: var(--ll-y); font-weight: 400; }
+#ll-hud u { color: var(--ll-c); text-decoration: none; animation: ll-tick 2s steps(1) infinite; }
+#ll-boot {
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 22vw;
+  background: #000;
+  color: var(--ll-y);
+  font-family: var(--ll-font);
+  animation: ll-boot-out .28s steps(6) 2.35s forwards;
+}
+#ll-boot h1 {
+  margin: 0;
+  font: 400 84px/1 var(--ll-font);
+  letter-spacing: .06em;
+  transform: skewX(-10deg);
+  text-shadow: 4px 0 var(--ll-r), -4px 0 var(--ll-c);
+  animation: ll-flicker 1.1s steps(1) infinite;
+}
+#ll-boot h1 b { color: var(--ll-r); font-weight: 400; }
+#ll-boot .pct { margin-top: 18px; font-size: 46px; line-height: 1; color: #fff; }
+#ll-boot .bar { width: 56vw; height: 10px; margin-top: 10px; background: var(--ll-tape); transform-origin: left; animation: ll-bar 2.2s linear both; }
+#ll-boot pre { margin: 14px 0 0; min-height: 76px; font: 15px/1.65 var(--ll-font); letter-spacing: .1em; color: var(--ll-c); white-space: pre-wrap; }
+
+html.ll-hidden #ll-logo, html.ll-hidden #ll-hud u, html.ll-hidden .TopBar::after,
+html.ll-hidden .PlayButton::after, html.ll-hidden .BottomBar::before { animation-play-state: paused; }
+
+@media (max-width: 1100px) { #ll-hud { display: none; } }
+@media (max-width: 900px) { #ll-logo { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; }
+  #ll-tear, #ll-boot { display: none !important; }
+}
+
+/* ---------- character: a warm lamp instead of a hard glitch ---------- */
+@keyframes ll-glitch { 0%, 100% { text-shadow: none; } 50% { text-shadow: 0 0 8px rgba(var(--ll-y-rgb), .7); } }
+@keyframes ll-split { 0%, 100% { filter: drop-shadow(0 0 7px rgba(var(--ll-y-rgb), .45)); } 50% { filter: drop-shadow(0 0 14px rgba(var(--ll-y-rgb), .75)); } }
+@keyframes ll-flicker { 0%, 91%, 100% { opacity: 1; } 92% { opacity: .72; } 94% { opacity: 1; } 96% { opacity: .85; } }
+@keyframes ll-sheen { 0%, 70% { transform: translateX(-140%); } 100% { transform: translateX(380%); } }
+/* layout language: square pixel edges, thin double rules, a glow from above */
+.Library .MainPanel > div {
+  background-image: radial-gradient(ellipse 70% 42% at 50% -6%, rgba(var(--ll-y-rgb), .13), transparent 70%) !important;
+}
+.TopBar::after { background: linear-gradient(90deg, transparent, rgba(var(--ll-y-rgb), .9), transparent); animation-duration: 14s; }
+.BottomBar::before { height: 2px; animation: none; background-size: 8px 2px; }
+.SuperNav .MenuButton, .ShowcaseHeader, .SectionHeader, .PlayButton .ButtonText, .PlayBarLabel, .PlayBarGameName,
+.Library .HomeBox .Label, .Library .SectionName, .Library .ViewName, .AddGameButton, .FriendsButton, .AddShowcase, .EventTime {
+  letter-spacing: .02em !important;
+}
+.ShowcaseHeader::before { width: 8px; height: 8px; transform: none; box-shadow: 0 0 8px var(--ll-y); }
+.ActionSection, .ActionSection:hover { filter: drop-shadow(0 0 10px rgba(var(--ll-y-rgb), .45)); }
+.PlayButton:hover { background: #fff3c4 !important; }
+.PlayButton:hover .ButtonText { color: #000 !important; }
+.PlayButton:hover svg, .PlayButton:hover svg * { fill: #000 !important; }
+.PlayButton::after { background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .45), transparent); animation-duration: 6s; }
+.Library .Container.Installed.Selected { box-shadow: inset 4px 0 0 #000; }
+.contextMenu, .MenuPopup { box-shadow: 0 0 18px rgba(var(--ll-y-rgb), .18) !important; }
+#ll-logo { transform: none; font-size: 15px; letter-spacing: .04em; text-shadow: 0 0 12px rgba(var(--ll-y-rgb), .6); }
+#ll-logo svg { width: 14px; height: 18px; filter: drop-shadow(0 0 5px var(--ll-y)); }
+#ll-hud { font-size: 12px; letter-spacing: .02em; }
+#ll-scan { background: repeating-linear-gradient(0deg, rgba(0, 0, 0, .07) 0 1px, transparent 1px 3px); }
+
+/* start screen: the lamp comes on, then the text types out */
+@keyframes ll-lamp { 0% { opacity: .08; filter: none; } 30% { opacity: .5; } 34% { opacity: .15; } 60%, 100% { opacity: 1; filter: drop-shadow(0 0 28px var(--ll-y)); } }
+@keyframes ll-boot-out { to { opacity: 0; visibility: hidden; } }
+#ll-boot { align-items: center; padding-left: 0; animation: ll-boot-out .5s ease 2.7s forwards; }
+#ll-boot svg { width: 96px; height: 124px; animation: ll-lamp 1.6s ease both; }
+#ll-boot h1 { margin-top: 22px; font-size: 34px; letter-spacing: .08em; transform: none; text-shadow: 0 0 16px rgba(var(--ll-y-rgb), .6); animation: none; }
+#ll-boot pre { min-width: 34ch; margin-top: 18px; font-size: 14px; letter-spacing: 0; color: var(--ll-dim); }

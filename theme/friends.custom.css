@@ -1,0 +1,193 @@
+/* Last Light theme: friends list and chat */
+:root {
+  --ll-black: #0d0a07;
+  --ll-panel: #16110b;
+  --ll-panel2: #211910;
+  --ll-line: #4a3518;
+  --ll-y: #f5c542;
+  --ll-r: #e8743b;
+  --ll-c: #8fd694;
+  --ll-text: #f1e6cf;
+  --ll-dim: #9a8768;
+  --ll-y-rgb: 245, 197, 66;
+  --ll-r-rgb: 232, 116, 59;
+  --ll-c-rgb: 143, 214, 148;
+  --ll-black-rgb: 13, 10, 7;
+  --ll-panel-rgb: 22, 17, 11;
+  --ll-font: "Cascadia Mono", "Cascadia Code", Consolas, "Lucida Console", monospace;
+  --ll-cut: none;
+  --ll-cut-s: none;
+  --ll-tape: repeating-linear-gradient(90deg, var(--ll-y) 0 4px, transparent 4px 8px);
+}
+@keyframes ll-glitch {
+  0%, 100% { text-shadow: none; transform: none; }
+  25% { text-shadow: 2px 0 var(--ll-r), -2px 0 var(--ll-c); transform: translateX(-1px); }
+  50% { text-shadow: -2px 0 var(--ll-r), 2px 0 var(--ll-c); transform: translateX(1px); }
+  75% { text-shadow: 3px 0 var(--ll-c); transform: none; }
+}
+html, body { background: var(--ll-black) !important; }
+::selection { background: var(--ll-y); color: #000; }
+::-webkit-scrollbar { width: 8px; background: transparent; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--ll-line); }
+::-webkit-scrollbar-thumb:hover { background: var(--ll-y); }
+
+/* title areas */
+.titleBarContainer, .ChatTabs {
+  background: var(--ll-panel) !important;
+  background-image: none !important;
+  border-bottom: 2px solid var(--ll-y);
+}
+.title-area-highlight { display: none !important; }
+.title-area-icon:hover { background: var(--ll-r) !important; }
+
+/* the blue strip along the top of friends and chat windows */
+.singleWindowFocusBar, .chatSingleWindowFocusBar {
+  background: linear-gradient(to bottom, var(--ll-y) 0 1px, transparent 1px) !important;
+}
+
+/* friends list */
+.friendlist, .chat_main, .chat_main_flex { background: var(--ll-black) !important; background-image: none !important; }
+.friendListHeaderContainer, .friendListFooter { box-shadow: none !important; }
+/* the status glow behind the current user: an SVG gradient, so CSS colours must target its stops */
+.statusHeaderGlow { opacity: .2; }
+.statusHeaderGlow stop { stop-color: var(--ll-y) !important; }
+.currentUserContainer .gameName { color: var(--ll-text) !important; }
+.currentUserContainer.ingame .statusHeaderGlow stop, .currentUserContainer.in-game .statusHeaderGlow stop { stop-color: var(--ll-r) !important; }
+.currentUserContainer.offline .statusHeaderGlow stop { stop-color: var(--ll-dim) !important; }
+/* party footer: "+1" and "with N more players" */
+.SteamPlayerGroupFooterCount .count, .SteamPlayerGroupFooterLabel { color: var(--ll-r) !important; }
+.currentUserContainer { border-bottom-color: var(--ll-line) !important; }
+.friendlistListContainer, .chatRoomListContainer {
+  background: var(--ll-black) !important;
+  background-image: none !important;
+}
+.friendGroup.onlineFriends, .friendGroup { border-top-color: var(--ll-line) !important; }
+.dropTargetBox { border-color: var(--ll-y) !important; }
+.SteamPlayerGroupLines { border-color: var(--ll-dim) !important; }
+img.avatar { border-color: var(--ll-line) !important; }
+.gameName { color: var(--ll-dim) !important; }
+.SnoozeZ { color: var(--ll-y) !important; }
+.avatarStatus { background: var(--ll-dim) !important; background-image: none !important; }
+.online .avatarStatus { background: var(--ll-y) !important; }
+.ingame .avatarStatus { background: var(--ll-r) !important; }
+.ChatRoomGroupAvatar, .ChatRoomMultiFriendAvatar {
+  background: var(--ll-panel2) !important;
+  background-image: none !important;
+  border-color: var(--ll-line) !important;
+}
+.ChatRoomGroupAvatar_initials { background-image: linear-gradient(var(--ll-y), var(--ll-y)) !important; }
+.friendTab, .chatSectionTitle {
+  background: var(--ll-panel2) !important;
+  background-image: none !important;
+  font-family: var(--ll-font);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+.friendTab.activeTab { box-shadow: inset 4px 0 0 var(--ll-y); }
+.friendTab .tabLabel, .chatSectionTitle { color: var(--ll-y) !important; }
+.friendListButton path, .friendListButton circle, .searchIconButton path { fill: var(--ll-y) !important; }
+.friendListFooter { background: var(--ll-panel) !important; background-image: none !important; border-top: 1px solid var(--ll-line); }
+.friendGroup .groupName {
+  font-family: var(--ll-font);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--ll-y) !important;
+  background: transparent !important;
+  background-image: none !important;
+}
+.groupCount { color: var(--ll-dim) !important; }
+.onlineFriends, .offlineFriends, .gameGroup, .ChatRoomList { background-image: none !important; }
+.friend { transition: box-shadow .1s; }
+.friend:hover { background: rgba(var(--ll-y-rgb), .08) !important; box-shadow: inset 3px 0 0 var(--ll-y); }
+.friend:hover .playerName { animation: ll-glitch .28s steps(1) 1; }
+.online .playerName { color: var(--ll-y) !important; }
+.ingame .playerName { color: var(--ll-r) !important; }
+.ingame .gameName, .ingame .richPresenceLabel { color: var(--ll-text) !important; }
+.offline .playerName { color: var(--ll-dim) !important; }
+.chatUnreadCircle { background: var(--ll-r) !important; }
+.chatRoomName { font-family: var(--ll-font); letter-spacing: .04em; }
+
+/* context menus in these windows, such as the status menu, render inside the window itself */
+.contextMenu {
+  background: var(--ll-panel) !important;
+  background-image: none !important;
+  border: 1px solid var(--ll-y) !important;
+  border-radius: 0 !important;
+  box-shadow: 0 0 14px rgba(var(--ll-y-rgb), .2) !important;
+}
+.contextMenuContents, .contextMenuSectionContent { background: transparent !important; background-image: none !important; }
+.contextMenuItem {
+  font-family: var(--ll-font);
+  letter-spacing: .03em;
+  color: var(--ll-text) !important;
+  background: transparent !important;
+  border-color: var(--ll-line) !important;
+  border-radius: 0 !important;
+}
+.contextMenuItem.menuChecked { color: var(--ll-y) !important; box-shadow: inset 3px 0 0 var(--ll-y); }
+.persona_menu_descriptor, .persona_menu_dnd_descriptor { color: var(--ll-dim) !important; }
+.contextMenuItem:hover { background: var(--ll-y) !important; color: #000 !important; }
+.contextMenuItem:hover .persona_menu_descriptor, .contextMenuItem:hover .persona_menu_dnd_descriptor,
+.contextMenuItem:hover span { color: #000 !important; }
+.contextMenu .DialogCheckbox { background: var(--ll-panel2) !important; border-radius: 0 !important; }
+.contextMenu .DialogToggle_Label span { color: inherit; }
+
+/* friend hover card: text colours follow the same status rules as the list */
+.miniProfile .personaNameLabel, .miniProfile .gameContent, .miniProfile .persona { text-shadow: 0 0 2px #000, 0 0 2px #000, 0 0 6px #000; }
+.miniProfile .persona * { color: inherit !important; }
+.miniProfile .personaNameLabel, .miniProfile .gameContent, .miniProfile .gameState, .miniProfile .richPresence,
+.miniProfile .persona { color: var(--ll-y) !important; }
+.miniProfile:has(.miniProfilePlayer.ingame) .personaNameLabel,
+.miniProfile:has(.miniProfilePlayer.ingame) .gameContent,
+.miniProfile:has(.miniProfilePlayer.ingame) .gameState,
+.miniProfile:has(.miniProfilePlayer.ingame) .richPresence,
+.miniProfile:has(.miniProfilePlayer.ingame) .persona { color: var(--ll-r) !important; }
+.miniProfile:has(.miniProfilePlayer.offline) .personaNameLabel,
+.miniProfile:has(.miniProfilePlayer.offline) .gameContent,
+.miniProfile:has(.miniProfilePlayer.offline) .persona { color: var(--ll-dim) !important; }
+
+/* chat */
+.ChatTab { background: transparent !important; border-radius: 0 !important; }
+.ChatTab:hover { background: rgba(var(--ll-y-rgb), .08) !important; }
+.ChatTab.Active { background: var(--ll-panel2) !important; box-shadow: inset 0 -3px 0 var(--ll-y); }
+.chatDialogs, .chatWindow, .chatHeader, .chatHistoryScroll {
+  background: var(--ll-black) !important;
+  background-image: none !important;
+}
+.preHorizDivider, .horizDivider { background: var(--ll-line) !important; }
+.msg.timeDivision { color: var(--ll-y); font-family: var(--ll-font); letter-spacing: .1em; text-transform: uppercase; }
+.speakerTimeStamp { color: var(--ll-dim) !important; font-family: var(--ll-font); }
+.speakerName { font-family: var(--ll-font); letter-spacing: .04em; }
+.speaker.online .speakerName { color: var(--ll-y) !important; }
+.speaker.ingame .speakerName { color: var(--ll-r) !important; }
+.speakerStatus { background: var(--ll-y) !important; }
+.speaker.offline .speakerStatus { background: var(--ll-line) !important; }
+.speakerHoverArea:hover .speakerName { animation: ll-glitch .28s steps(1) 1; }
+.ChatMessageBlock:hover { box-shadow: inset 2px 0 0 var(--ll-y); }
+.isCurrentUser .msgText { color: var(--ll-y); }
+
+.FriendChatTimeStamp { color: var(--ll-dim) !important; border-color: var(--ll-line) !important; }
+.FriendChatTypingNotification { background-image: none !important; color: var(--ll-y) !important; }
+.FriendChatTypingNotification span { background-image: none !important; color: var(--ll-y) !important; }
+.inviteAnotherFriendButton { background: var(--ll-panel2) !important; }
+
+.chatEntry { background: var(--ll-panel) !important; border-top: 1px solid var(--ll-line); }
+.chatEntryControls { background: var(--ll-panel2) !important; border-radius: 0 !important; }
+.chatEntryControls:focus-within { box-shadow: 0 0 0 1px var(--ll-y); }
+.chatTextarea { color: var(--ll-text) !important; caret-color: var(--ll-r); }
+.chatSubmitButton, .VoiceToggle {
+  background: var(--ll-panel) !important;
+  background-image: none !important;
+  border-radius: 0 !important;
+}
+.chatSubmitButton:not(.disabled):hover, .VoiceToggle:not(.Disabled):hover { background: var(--ll-y) !important; }
+.chatSubmitButton:not(.disabled):hover path { fill: #000 !important; }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; } }
+
+/* ---------- character: a warm lamp instead of a hard glitch ---------- */
+@keyframes ll-glitch { 0%, 100% { text-shadow: none; } 50% { text-shadow: 0 0 8px rgba(var(--ll-y-rgb), .7); } }
+@keyframes ll-split { 0%, 100% { filter: drop-shadow(0 0 7px rgba(var(--ll-y-rgb), .45)); } 50% { filter: drop-shadow(0 0 14px rgba(var(--ll-y-rgb), .75)); } }
+@keyframes ll-flicker { 0%, 91%, 100% { opacity: 1; } 92% { opacity: .72; } 94% { opacity: 1; } 96% { opacity: .85; } }
+@keyframes ll-sheen { 0%, 70% { transform: translateX(-140%); } 100% { transform: translateX(380%); } }

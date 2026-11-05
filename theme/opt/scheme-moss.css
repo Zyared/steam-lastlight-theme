@@ -1,0 +1,17 @@
+/* Colour scheme: moss */
+html:root {
+  --ll-black: #070b07;
+  --ll-panel: #0e150e;
+  --ll-panel2: #172217;
+  --ll-line: #2d4429;
+  --ll-y: #9fdc7c;
+  --ll-r: #f5c542;
+  --ll-c: #6ec6b8;
+  --ll-text: #e6f0da;
+  --ll-dim: #83987a;
+  --ll-y-rgb: 159, 220, 124;
+  --ll-r-rgb: 245, 197, 66;
+  --ll-c-rgb: 110, 198, 184;
+  --ll-black-rgb: 7, 11, 7;
+  --ll-panel-rgb: 14, 21, 14;
+}

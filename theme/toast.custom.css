@@ -1,0 +1,52 @@
+/* Last Light theme: desktop pop-up notifications */
+:root {
+  --ll-black: #0d0a07;
+  --ll-panel: #16110b;
+  --ll-panel2: #211910;
+  --ll-line: #4a3518;
+  --ll-y: #f5c542;
+  --ll-r: #e8743b;
+  --ll-c: #8fd694;
+  --ll-text: #f1e6cf;
+  --ll-dim: #9a8768;
+  --ll-y-rgb: 245, 197, 66;
+  --ll-r-rgb: 232, 116, 59;
+  --ll-c-rgb: 143, 214, 148;
+  --ll-black-rgb: 13, 10, 7;
+  --ll-panel-rgb: 22, 17, 11;
+  --ll-font: "Cascadia Mono", "Cascadia Code", Consolas, "Lucida Console", monospace;
+  --ll-cut: none;
+  --ll-cut-s: none;
+  --ll-tape: repeating-linear-gradient(90deg, var(--ll-y) 0 4px, transparent 4px 8px);
+}
+@keyframes ll-glitch {
+  0%, 100% { transform: none; text-shadow: none; }
+  25% { transform: translateX(-2px) skewX(-6deg); text-shadow: 2px 0 var(--ll-r), -2px 0 var(--ll-c); }
+  50% { transform: translateX(2px) skewX(5deg); text-shadow: -2px 0 var(--ll-r), 2px 0 var(--ll-c); }
+  75% { transform: translateX(-1px); text-shadow: 2px 0 var(--ll-c); }
+}
+.DesktopToastTemplate, .StandardTemplateContainer, .StandardTemplate, .ShortTemplate, .StandardTemplateDesktop {
+  background: var(--ll-panel) !important;
+  background-image: none !important;
+  border-radius: 0 !important;
+}
+.DesktopToastTemplate { box-shadow: inset 0 0 0 1px var(--ll-y) !important; }
+.Title, .OnlineTitle, .GroupMessageTitle, .GroupMessageUserName, .PlayerNickName, .FullName {
+  color: var(--ll-y) !important;
+  font-family: var(--ll-font) !important;
+  letter-spacing: .04em;
+}
+.IngameTitle, .IngameTitle .PlayerNickName, .IngameTitle .FullName, .FriendInGameAppColor { color: var(--ll-r) !important; }
+.IngameTitle, .OnlineTitle { animation: ll-glitch .35s steps(1) 2; }
+.Body, .GroupMessageBody, .StandardNotificationDescription { color: var(--ll-text) !important; }
+.StandardNotificationSubText, .Timestamp { color: var(--ll-dim) !important; }
+.AvatarStatus { background: var(--ll-y) !important; background-image: none !important; }
+.DesktopToastTemplate:has(.IngameTitle) .AvatarStatus, .DesktopToastTemplate:has(.FriendInGameAppColor) .AvatarStatus { background: var(--ll-r) !important; }
+.BottomBar { background: var(--ll-line) !important; background-image: none !important; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; } }
+
+/* ---------- character: a warm lamp instead of a hard glitch ---------- */
+@keyframes ll-glitch { 0%, 100% { text-shadow: none; } 50% { text-shadow: 0 0 8px rgba(var(--ll-y-rgb), .7); } }
+@keyframes ll-split { 0%, 100% { filter: drop-shadow(0 0 7px rgba(var(--ll-y-rgb), .45)); } 50% { filter: drop-shadow(0 0 14px rgba(var(--ll-y-rgb), .75)); } }
+@keyframes ll-flicker { 0%, 91%, 100% { opacity: 1; } 92% { opacity: .72; } 94% { opacity: 1; } 96% { opacity: .85; } }
+@keyframes ll-sheen { 0%, 70% { transform: translateX(-140%); } 100% { transform: translateX(380%); } }

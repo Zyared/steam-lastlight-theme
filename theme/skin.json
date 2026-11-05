@@ -1,0 +1,135 @@
+{
+    "name":  "LastLight",
+    "author":  "Zyared",
+    "description":  "Warm lamp light in a dark terminal world: amber on black, a monospace font, soft glow and a small lamp at start-up. An unofficial theme with original artwork.",
+    "version":  "1.0.0",
+    "header_image":  "assets/logo.svg",
+    "splash_image":  "assets/logo.svg",
+    "tags":  [
+                 "dark",
+                 "warm",
+                 "retro"
+             ],
+    "Steam-WebKit":  "webkit.css",
+    "Patches":  [
+                    {
+                        "MatchRegexString":  "^Steam$",
+                        "TargetCss":  "libraryroot.custom.css",
+                        "TargetJs":  "libraryroot.custom.js"
+                    },
+                    {
+                        "MatchRegexString":  "^(Войти в Steam|Sign in to Steam)$",
+                        "TargetCss":  "login.custom.css"
+                    },
+                    {
+                        "MatchRegexString":  "^notificationtoasts",
+                        "TargetCss":  "toast.custom.css"
+                    },
+                    {
+                        "MatchRegexString":  ".DesktopToastPopup",
+                        "TargetCss":  "toast.custom.css"
+                    },
+                    {
+                        "MatchRegexString":  "(Menu|Supernav)$",
+                        "TargetCss":  "libraryroot.custom.css"
+                    },
+                    {
+                        "MatchRegexString":  ".ModalDialogPopup",
+                        "TargetCss":  "libraryroot.custom.css"
+                    },
+                    {
+                        "MatchRegexString":  ".FullModalOverlay",
+                        "TargetCss":  "libraryroot.custom.css"
+                    },
+                    {
+                        "MatchRegexString":  ".friendsui-container",
+                        "TargetCss":  "friends.custom.css"
+                    }
+                ],
+    "Conditions":  {
+                       "Color scheme":  {
+                                            "default":  "Amber lamp",
+                                            "description":  "Main colours of the whole theme. Restart Steam after changing it.",
+                                            "values":  {
+                                                           "Amber lamp":  {
+
+                                                                          },
+                                                           "Rust":  {
+                                                                        "TargetCss":  {
+                                                                                          "affects":  [
+                                                                                                          ".*"
+                                                                                                      ],
+                                                                                          "src":  "opt/scheme-rust.css"
+                                                                                      }
+                                                                    },
+                                                           "Moss":  {
+                                                                        "TargetCss":  {
+                                                                                          "affects":  [
+                                                                                                          ".*"
+                                                                                                      ],
+                                                                                          "src":  "opt/scheme-moss.css"
+                                                                                      }
+                                                                    },
+                                                           "Dusk":  {
+                                                                        "TargetCss":  {
+                                                                                          "affects":  [
+                                                                                                          ".*"
+                                                                                                      ],
+                                                                                          "src":  "opt/scheme-dusk.css"
+                                                                                      }
+                                                                    }
+                                                       }
+                                        },
+                       "Start screen":  {
+                                            "default":  "yes",
+                                            "description":  "The lamp coming on when Steam starts.",
+                                            "values":  {
+                                                           "yes":  {
+
+                                                                   },
+                                                           "no":  {
+                                                                      "TargetCss":  {
+                                                                                        "affects":  [
+                                                                                                        "^Steam$"
+                                                                                                    ],
+                                                                                        "src":  "opt/no-boot.css"
+                                                                                    }
+                                                                  }
+                                                       }
+                                        },
+                       "HUD readout":  {
+                                           "default":  "yes",
+                                           "description":  "Clock and status line in the bottom bar.",
+                                           "values":  {
+                                                          "yes":  {
+
+                                                                  },
+                                                          "no":  {
+                                                                     "TargetCss":  {
+                                                                                       "affects":  [
+                                                                                                       "^Steam$"
+                                                                                                   ],
+                                                                                       "src":  "opt/no-hud.css"
+                                                                                   }
+                                                                 }
+                                                      }
+                                       },
+                       "Scanlines":  {
+                                         "default":  "yes",
+                                         "description":  "Faint CRT scanlines over the client.",
+                                         "values":  {
+                                                        "yes":  {
+
+                                                                },
+                                                        "no":  {
+                                                                   "TargetCss":  {
+                                                                                     "affects":  [
+                                                                                                     "^Steam$"
+                                                                                                 ],
+                                                                                     "src":  "opt/no-scan.css"
+                                                                                 }
+                                                               }
+                                                    }
+                                     }
+                   }
+}
