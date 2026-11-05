@@ -1,0 +1,21 @@
+/* Colour scheme: emerald */
+html:root {
+  --ll-black: #020a08;
+  --ll-panel: #05140f;
+  --ll-panel2: #0a221a;
+  --ll-line: #104a38;
+  --ll-frame: #12a877;
+  --ll-y: #5fe3b0;
+  --ll-gold: #ffd84a;
+  --ll-r: #3ddc84;
+  --ll-c: #6fd3ff;
+  --ll-text: #def3ea;
+  --ll-dim: #6f9c8c;
+  --ll-y-rgb: 95, 227, 176;
+  --ll-r-rgb: 61, 220, 132;
+  --ll-c-rgb: 111, 211, 255;
+  --ll-black-rgb: 2, 10, 8;
+  --ll-panel-rgb: 5, 20, 15;
+  --ll-gold-rgb: 255, 216, 74;
+  --ll-frame-rgb: 18, 168, 119;
+}

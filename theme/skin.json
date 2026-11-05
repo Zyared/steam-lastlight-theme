@@ -1,13 +1,13 @@
 {
     "name":  "LastLight",
     "author":  "Zyared",
-    "description":  "Warm lamp light in a dark terminal world: amber on black, a monospace font, soft glow and a small lamp at start-up. An unofficial theme with original artwork.",
-    "version":  "1.0.0",
+    "description":  "Black and violet circuit frames, a gold lamp with an orange glow and a neon city behind the library. An unofficial theme with original artwork.",
+    "version":  "1.1.0",
     "header_image":  "assets/logo.svg",
     "splash_image":  "assets/logo.svg",
     "tags":  [
                  "dark",
-                 "warm",
+                 "neon",
                  "retro"
              ],
     "Steam-WebKit":  "webkit.css",
@@ -48,36 +48,36 @@
                 ],
     "Conditions":  {
                        "Color scheme":  {
-                                            "default":  "Amber lamp",
+                                            "default":  "Violet night",
                                             "description":  "Main colours of the whole theme. Restart Steam after changing it.",
                                             "values":  {
-                                                           "Amber lamp":  {
+                                                           "Violet night":  {
 
-                                                                          },
-                                                           "Rust":  {
-                                                                        "TargetCss":  {
-                                                                                          "affects":  [
-                                                                                                          ".*"
-                                                                                                      ],
-                                                                                          "src":  "opt/scheme-rust.css"
-                                                                                      }
-                                                                    },
-                                                           "Moss":  {
-                                                                        "TargetCss":  {
-                                                                                          "affects":  [
-                                                                                                          ".*"
-                                                                                                      ],
-                                                                                          "src":  "opt/scheme-moss.css"
-                                                                                      }
-                                                                    },
-                                                           "Dusk":  {
-                                                                        "TargetCss":  {
-                                                                                          "affects":  [
-                                                                                                          ".*"
-                                                                                                      ],
-                                                                                          "src":  "opt/scheme-dusk.css"
-                                                                                      }
-                                                                    }
+                                                                            },
+                                                           "Pink city":  {
+                                                                             "TargetCss":  {
+                                                                                               "affects":  [
+                                                                                                               ".*"
+                                                                                                           ],
+                                                                                               "src":  "opt/scheme-pink.css"
+                                                                                           }
+                                                                         },
+                                                           "Emerald":  {
+                                                                           "TargetCss":  {
+                                                                                             "affects":  [
+                                                                                                             ".*"
+                                                                                                         ],
+                                                                                             "src":  "opt/scheme-emerald.css"
+                                                                                         }
+                                                                       },
+                                                           "Deep blue":  {
+                                                                             "TargetCss":  {
+                                                                                               "affects":  [
+                                                                                                               ".*"
+                                                                                                           ],
+                                                                                               "src":  "opt/scheme-blue.css"
+                                                                                           }
+                                                                         }
                                                        }
                                         },
                        "Start screen":  {

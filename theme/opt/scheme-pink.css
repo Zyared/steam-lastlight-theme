@@ -1,0 +1,21 @@
+/* Colour scheme: pink */
+html:root {
+  --ll-black: #0c0208;
+  --ll-panel: #180610;
+  --ll-panel2: #260a1b;
+  --ll-line: #5c1440;
+  --ll-frame: #d81b7a;
+  --ll-y: #ff7ac0;
+  --ll-gold: #ffd84a;
+  --ll-r: #ff2e7e;
+  --ll-c: #b48cff;
+  --ll-text: #f6dfec;
+  --ll-dim: #a9709a;
+  --ll-y-rgb: 255, 122, 192;
+  --ll-r-rgb: 255, 46, 126;
+  --ll-c-rgb: 180, 140, 255;
+  --ll-black-rgb: 12, 2, 8;
+  --ll-panel-rgb: 24, 6, 16;
+  --ll-gold-rgb: 255, 216, 74;
+  --ll-frame-rgb: 216, 27, 122;
+}

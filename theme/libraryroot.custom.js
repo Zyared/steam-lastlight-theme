@@ -4,7 +4,7 @@
     const root = document.documentElement;
     if (!root.classList.contains('MillenniumWindow_MainSteamWindow') || document.getElementById('ll-scan')) return;
 
-    const BULB = '<svg viewBox="0 0 24 31"><path fill="currentColor" d="M12 0a11 11 0 0 0-6 20.2V24h12v-3.8A11 11 0 0 0 12 0z"/><rect x="7" y="25" width="10" height="2" fill="currentColor" opacity=".55"/><rect x="8" y="28" width="8" height="2" fill="currentColor" opacity=".55"/></svg>';
+    const BULB = '<svg viewBox="0 0 24 31"><path fill="currentColor" d="M12 0a11 11 0 0 0-6 20.2V24h12v-3.8A11 11 0 0 0 12 0z"/><path fill="none" stroke="#fff" stroke-width="1" opacity=".85" d="M9 21c0-5-3-8-1-10s4 1 4 3 2 5 4-3-2 2-3 10"/><circle cx="8" cy="5" r="1.6" fill="#fff"/><rect x="7" y="25" width="10" height="2" fill="#8d7bb0"/><rect x="8" y="28" width="8" height="2" fill="#8d7bb0"/></svg>';
     const add = (tag, id, html) => {
       const el = document.createElement(tag);
       el.id = id;

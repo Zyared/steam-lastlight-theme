@@ -1,0 +1,21 @@
+/* Colour scheme: blue */
+html:root {
+  --ll-black: #03040f;
+  --ll-panel: #080b1e;
+  --ll-panel2: #0e1330;
+  --ll-line: #1f2a70;
+  --ll-frame: #3350e0;
+  --ll-y: #88a4ff;
+  --ll-gold: #ffd84a;
+  --ll-r: #5ad1ff;
+  --ll-c: #b48cff;
+  --ll-text: #e0e6fa;
+  --ll-dim: #7382b5;
+  --ll-y-rgb: 136, 164, 255;
+  --ll-r-rgb: 90, 209, 255;
+  --ll-c-rgb: 180, 140, 255;
+  --ll-black-rgb: 3, 4, 15;
+  --ll-panel-rgb: 8, 11, 30;
+  --ll-gold-rgb: 255, 216, 74;
+  --ll-frame-rgb: 51, 80, 224;
+}

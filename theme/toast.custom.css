@@ -1,23 +1,27 @@
 /* Last Light theme: desktop pop-up notifications */
 :root {
-  --ll-black: #0d0a07;
-  --ll-panel: #16110b;
-  --ll-panel2: #211910;
-  --ll-line: #4a3518;
-  --ll-y: #f5c542;
-  --ll-r: #e8743b;
-  --ll-c: #8fd694;
-  --ll-text: #f1e6cf;
-  --ll-dim: #9a8768;
-  --ll-y-rgb: 245, 197, 66;
-  --ll-r-rgb: 232, 116, 59;
-  --ll-c-rgb: 143, 214, 148;
-  --ll-black-rgb: 13, 10, 7;
-  --ll-panel-rgb: 22, 17, 11;
+  --ll-black: #050308;
+  --ll-panel: #0d0716;
+  --ll-panel2: #170c26;
+  --ll-line: #351a63;
+  --ll-frame: #7b2fe0;
+  --ll-y: #b48cff;
+  --ll-gold: #ffd84a;
+  --ll-r: #ff2e7e;
+  --ll-c: #6fa8ff;
+  --ll-text: #e8e0f6;
+  --ll-dim: #8d7bb0;
+  --ll-y-rgb: 180, 140, 255;
+  --ll-r-rgb: 255, 46, 126;
+  --ll-c-rgb: 111, 168, 255;
+  --ll-black-rgb: 5, 3, 8;
+  --ll-panel-rgb: 13, 7, 22;
+  --ll-gold-rgb: 255, 216, 74;
+  --ll-frame-rgb: 123, 47, 224;
   --ll-font: "Cascadia Mono", "Cascadia Code", Consolas, "Lucida Console", monospace;
   --ll-cut: none;
   --ll-cut-s: none;
-  --ll-tape: repeating-linear-gradient(90deg, var(--ll-y) 0 4px, transparent 4px 8px);
+  --ll-tape: repeating-linear-gradient(90deg, var(--ll-frame) 0 4px, transparent 4px 8px);
 }
 @keyframes ll-glitch {
   0%, 100% { transform: none; text-shadow: none; }
@@ -50,3 +54,6 @@
 @keyframes ll-split { 0%, 100% { filter: drop-shadow(0 0 7px rgba(var(--ll-y-rgb), .45)); } 50% { filter: drop-shadow(0 0 14px rgba(var(--ll-y-rgb), .75)); } }
 @keyframes ll-flicker { 0%, 91%, 100% { opacity: 1; } 92% { opacity: .72; } 94% { opacity: 1; } 96% { opacity: .85; } }
 @keyframes ll-sheen { 0%, 70% { transform: translateX(-140%); } 100% { transform: translateX(380%); } }
+
+/* frames in the violet of the main window */
+::-webkit-scrollbar-thumb:hover { background: var(--ll-frame); }
