@@ -1,0 +1,3 @@
+.Library .MainPanel > div::after, html::after, html:not(.MillenniumWindow_ContextMenu) body::after {
+  background: none !important;
+}

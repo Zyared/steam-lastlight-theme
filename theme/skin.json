@@ -80,6 +80,31 @@
                                                                          }
                                                        }
                                         },
+                       "Character":  {
+                                         "default":  "Traveller",
+                                         "description":  "Figure in the corner. My image uses assets/character.png in the theme folder. Restart Steam after changing it.",
+                                         "values":  {
+                                                        "Traveller":  {
+
+                                                                      },
+                                                        "My image":  {
+                                                                         "TargetCss":  {
+                                                                                           "affects":  [
+                                                                                                           ".*"
+                                                                                                       ],
+                                                                                           "src":  "opt/character-custom.css"
+                                                                                       }
+                                                                     },
+                                                        "None":  {
+                                                                     "TargetCss":  {
+                                                                                       "affects":  [
+                                                                                                       ".*"
+                                                                                                   ],
+                                                                                       "src":  "opt/character-none.css"
+                                                                                   }
+                                                                 }
+                                                    }
+                                     },
                        "Start screen":  {
                                             "default":  "yes",
                                             "description":  "The lamp coming on when Steam starts.",

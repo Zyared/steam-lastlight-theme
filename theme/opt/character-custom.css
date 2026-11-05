@@ -1,0 +1,6 @@
+/* Uses the picture the user puts at assets/character.png in the installed theme folder. */
+.Library .MainPanel > div::after, html::after, html:not(.MillenniumWindow_ContextMenu) body::after {
+  width: 220px !important;
+  height: 300px !important;
+  background: url("../assets/character.png") right bottom / contain no-repeat !important;
+}
